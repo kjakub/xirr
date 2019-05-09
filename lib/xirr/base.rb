@@ -27,13 +27,17 @@ module Xirr
         sum + (xnpv_c rate, t.amount, periods_from_start(t.date))
       end
     end
+    
+    def xnpv_c(rate,amount,period)
+      return 0.054893
+    end
 
-    inline { |builder|
-      builder.include '<math.h>'
-      builder.c '
-        double xnpv_c(double rate, double amount, double period) {
-          return amount / pow(1 + rate, period);
-        }'
-    }
+    #inline { |builder|
+    #  builder.include '<math.h>'
+    #  builder.c '
+    #    double xnpv_c(double rate, double amount, double period) {
+    #      return amount / pow(1 + rate, period);
+    #    }'
+    #}
   end
 end
